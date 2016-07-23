@@ -17,6 +17,16 @@ class ClientTest < Minitest::Test
     assert weather['city_info']['country'] == 'Suisse'
   end
 
+  def test_find_by_position
+    stub_response('client_test_position.json')
+
+    weather = @client.find_by_position '46.58', '6.60'
+
+    assert weather['city_info']['name'] == 'NA'
+    assert weather['city_info']['country'] == '--'
+    assert weather['city_info']['sunrise'] == '05:59'
+  end
+
   def test_errors
     stub_response('client_test_failure.json')
 

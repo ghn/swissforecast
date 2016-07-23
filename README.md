@@ -6,9 +6,6 @@ Ruby client for the Swiss weather forecast API
 
 ```bash
 gem install swissforecast
-
-#run example
-ruby example.rb
 ```
 
 ##Usage
@@ -22,10 +19,16 @@ client = Swissforecast::Client.new
 
 See below how to use this client.
 
-###Locations
+###Find by city
 
 ```ruby
 client.find_by_city 'Lausanne'
+```
+
+###Find by position
+
+```ruby
+client.find_by_position '46.58', '6.60'
 ```
 
 ## Development

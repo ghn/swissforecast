@@ -11,7 +11,11 @@ module Swissforecast
     #
 
     def find_by_city(city)
-      perform(city)
+      perform(city.sub(' ', '-'))
+    end
+
+    def find_by_position(lat, lng)
+      perform("lat=#{lat}lng=#{lng}")
     end
 
     private
