@@ -45,3 +45,5 @@ rake test
 ## License
 
 MIT License (MIT)
+
+Thanks to [Prevision meteo](http://www.prevision-meteo.ch) for opening their data
