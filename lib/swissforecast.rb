@@ -1,6 +1,5 @@
-require 'rubygems'
-require 'rest_client'
 require 'json'
+require 'net/http'
 
 module Swissforecast
   class Client
@@ -23,7 +22,7 @@ module Swissforecast
     attr_reader :domain
 
     def perform(params = '')
-      response = RestClient.get("#{DEFAULT_DOMAIN}/#{params}")
+      response = Net::HTTP.get(URI("#{DEFAULT_DOMAIN}/#{params}"))
 
       # Uncomment the line below to dump the response in order to generate
       # a file to use as response stub in tests.
