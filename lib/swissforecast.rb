@@ -1,5 +1,6 @@
 require 'json'
 require 'net/http'
+require 'ostruct'
 
 module Swissforecast
   class Client
@@ -13,13 +14,15 @@ module Swissforecast
       perform(city.sub(' ', '-'))
     end
 
+    #
+    # => find weather by gps position
+    #
+
     def find_by_position(lat, lng)
       perform("lat=#{lat}lng=#{lng}")
     end
 
     private
-
-    attr_reader :domain
 
     def perform(params = '')
       response = Net::HTTP.get(URI("#{DEFAULT_DOMAIN}/#{params}"))
@@ -28,7 +31,7 @@ module Swissforecast
       # a file to use as response stub in tests.
       # File.write('/tmp/response.json', response)
 
-      JSON.parse(response)
+      JSON.parse(response, object_class: OpenStruct)
     end
   end
 end

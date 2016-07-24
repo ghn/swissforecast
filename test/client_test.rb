@@ -13,8 +13,8 @@ class ClientTest < Minitest::Test
 
     weather = @client.find_by_city 'lausanne'
 
-    assert weather['city_info']['name'] == 'Lausanne'
-    assert weather['city_info']['country'] == 'Suisse'
+    assert weather.city_info.name == 'Lausanne'
+    assert weather.city_info.country == 'Suisse'
   end
 
   def test_find_by_position
@@ -22,9 +22,9 @@ class ClientTest < Minitest::Test
 
     weather = @client.find_by_position '46.58', '6.60'
 
-    assert weather['city_info']['name'] == 'NA'
-    assert weather['city_info']['country'] == '--'
-    assert weather['city_info']['sunrise'] == '05:59'
+    assert weather.city_info.name == 'NA'
+    assert weather.city_info.country == '--'
+    assert weather.city_info.sunrise == '05:59'
   end
 
   def test_errors
@@ -32,8 +32,8 @@ class ClientTest < Minitest::Test
 
     weather = @client.find_by_city 'not_existing_city'
 
-    assert weather['errors'].count == 1
-    assert weather['errors'].first['code'] == '11'
+    assert weather.errors.count == 1
+    assert weather.errors.first.code == '11'
   end
 
   def stub_response(name, url = /.*/, method = :get)
