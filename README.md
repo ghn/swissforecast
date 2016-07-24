@@ -1,5 +1,8 @@
 #swissforecast
 
+[![Gem Version](https://badge.fury.io/rb/swissforecast.svg)](https://badge.fury.io/rb/swissforecast)
+[![Build Status](https://travis-ci.org/ghn/swissforecast.svg?branch=master)](https://travis-ci.org/ghn/swissforecast)
+
 Ruby client for the Swiss weather forecast API
 
 ##Installation
