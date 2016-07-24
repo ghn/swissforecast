@@ -7,19 +7,15 @@ module Swissforecast
     DEFAULT_DOMAIN = 'http://www.prevision-meteo.ch/services/json'.freeze
 
     #
-    # => find weather by city
+    # => find weather by city or by gps position
     #
 
-    def find_by_city(city)
-      perform(city.sub(' ', '-'))
-    end
-
-    #
-    # => find weather by gps position
-    #
-
-    def find_by_position(lat, lng)
-      perform("lat=#{lat}lng=#{lng}")
+    def find_by(param)
+      if param.key?(:city)
+        perform(param[:city].sub(' ', '-'))
+      elsif param.key?(:lat) && param.key?(:lng)
+        perform("lat=#{param[:lat]}lng=#{param[:lng]}")
+      end
     end
 
     private

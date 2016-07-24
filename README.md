@@ -25,13 +25,13 @@ See below how to use this client.
 ###Find by city
 
 ```ruby
-client.find_by_city 'Lausanne'
+client.find_by city: 'Lausanne'
 ```
 
 ###Find by position
 
 ```ruby
-client.find_by_position '46.58', '6.60'
+client.find_by lat: '46.58', lng: '6.60'
 ```
 
 ## Development

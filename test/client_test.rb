@@ -11,7 +11,7 @@ class ClientTest < Minitest::Test
   def test_find_by_city
     stub_response('client_test_city.json')
 
-    weather = @client.find_by_city 'lausanne'
+    weather = @client.find_by city: 'lausanne'
 
     assert weather.city_info.name == 'Lausanne'
     assert weather.city_info.country == 'Suisse'
@@ -20,7 +20,7 @@ class ClientTest < Minitest::Test
   def test_find_by_position
     stub_response('client_test_position.json')
 
-    weather = @client.find_by_position '46.58', '6.60'
+    weather = @client.find_by lat: '46.58', lng: '6.60'
 
     assert weather.city_info.name == 'NA'
     assert weather.city_info.country == '--'
@@ -30,7 +30,7 @@ class ClientTest < Minitest::Test
   def test_errors
     stub_response('client_test_failure.json')
 
-    weather = @client.find_by_city 'not_existing_city'
+    weather = @client.find_by city: 'not_existing_city'
 
     assert weather.errors.count == 1
     assert weather.errors.first.code == '11'
