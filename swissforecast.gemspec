@@ -1,6 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name = 'swissforecast'
-  gem.version = '0.1.0'
+  gem.version = '0.2.0'
   gem.authors = ['ghn']
   gem.email = ['ghugon@gmail.com']
   gem.description = 'Swissforecast helps you query the swiss weather forecast
